@@ -36,3 +36,12 @@ import.
 
 Since the vcs texts do not contain information about the "starred" property of a
 certain contact, this property will *not* be restored during the import.
+
+
+How to build with gradle
+========================
+
+The gradle buildsystem was added to this project. To build the app use
+
+    $ make  # generate the lauchner.png's
+    $ ./gradlew assembleDebug
