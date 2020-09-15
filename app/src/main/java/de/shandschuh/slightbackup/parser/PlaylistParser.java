@@ -140,7 +140,8 @@ public class PlaylistParser extends Parser {
 							addHint(context.getString(R.string.hint_overwritten, name));
 						}
 						else{
-							addHint(context.getString(R.string.error_deletedWrongAmountOfPlaylists, name, deletedRowCount, 1));
+							addHint(context.getString(R.string.error_deletedWrongAmountOfPlaylists,
+									name, deletedRowCount, 1));
 						}
 					}
 					else {
@@ -156,6 +157,8 @@ public class PlaylistParser extends Parser {
 					levelOneId = Long.parseLong(context.getContentResolver()
 							.insert(Audio.Playlists.EXTERNAL_CONTENT_URI,
 									values).getLastPathSegment());
+					context.getContentResolver()
+							.notifyChange(Uri.parse("content://media"), null);
 				}
 				playlistCursor.close();
 			}
