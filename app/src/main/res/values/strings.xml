@@ -15,6 +15,8 @@
     <string name="hint_noexportdata">No data available for export.</string>
     <string name="hint_exporting">Exporting %s &#8230;</string>
     <string name="hint_existed">\"%s\" existed</string>
+    <string name="hint_overwritten">\"%s\" overwritten</string>
+    <string name="error_deletedWrongAmountOfPlaylists">Error at \"%s\": deleted \"%d\" instead of \"%d\" playlists.</string>
     
     <!-- there is no need for a translation of the following string -->
     <string name="license">Slight backup - a simple backup tool\n\n
