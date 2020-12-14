@@ -16,6 +16,8 @@
     <string name="hint_exporting">Exporting %s &#8230;</string>
     <string name="hint_existed">\"%s\" existed</string>
     <string name="hint_smsairplanemode">The to import the SMS, please enable the airplane mode and try importing the messages again.</string>
+    <string name="hint_overwritten">\"%s\" overwritten</string>
+    <string name="error_deletedWrongAmountOfPlaylists">Error at \"%s\": deleted \"%d\" instead of \"%d\" playlists.</string>
     
     <!-- there is no need for a translation of the following string -->
     <string name="license">Slight backup - a simple backup tool\n\n

@@ -128,19 +128,37 @@ public class PlaylistParser extends Parser {
 						Audio.Playlists.EXTERNAL_CONTENT_URI,
 						levelOneProjection, levelOneSelection,
 						new String[] { name }, null);
-				
-				if (playlistCursor.moveToNext()) {
-					
-					addHint(context.getString(R.string.hint_existed, name));
-					// we do not want to import into an existing list
-					levelOneTagEntered = false;
-				} else {
+				boolean overwrite = true; //TODO make overwriting optional
+				boolean playlistExists = playlistCursor.moveToNext();
+				if (playlistExists) {
+					if(overwrite){
+						int deletedRowCount = context.getContentResolver().delete(
+								Audio.Playlists.EXTERNAL_CONTENT_URI,
+								levelOneSelection,
+								new String[] { name });
+						if( deletedRowCount == 1){
+							addHint(context.getString(R.string.hint_overwritten, name));
+						}
+						else{
+							addHint(context.getString(R.string.error_deletedWrongAmountOfPlaylists,
+									name, deletedRowCount, 1));
+						}
+					}
+					else {
+						addHint(context.getString(R.string.hint_existed, name));
+						// we do not want to import into an existing list
+						levelOneTagEntered = false;
+					}
+				}
+				if (!playlistExists || overwrite) {
 					ContentValues values = new ContentValues();
 					
 					values.put(Audio.Playlists.NAME, name);
 					levelOneId = Long.parseLong(context.getContentResolver()
 							.insert(Audio.Playlists.EXTERNAL_CONTENT_URI,
 									values).getLastPathSegment());
+					context.getContentResolver()
+							.notifyChange(Uri.parse("content://media"), null);
 				}
 				playlistCursor.close();
 			}

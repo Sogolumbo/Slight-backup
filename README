@@ -39,7 +39,6 @@ certain contact, this property will *not* be restored during the import.
 
 
 SMS import for android >= 4.4
-=============================
 
 In android 4.4, an official public SMS api has been introduced. This new api only
 allows the standard messaging application to write to the SMS database. Therefore,
@@ -59,3 +58,13 @@ Therefore, the following procedure might be a solution to this problem:
   5. disable airplane mode
 This however, is also not a secure solution since the meaning of airplane mode
 might change.
+
+=======================
+How to build with gradle
+========================
+
+The gradle buildsystem was added to this project. To build the app use
+
+    $ make  # generate the lauchner.png's
+    $ ./gradlew assembleDebug
+
